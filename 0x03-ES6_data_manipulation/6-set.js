@@ -1,3 +1,3 @@
-export default function createInt8TypedArray(array) {
+export default function setFromArray(array) {
   return new Set(array);
 }
