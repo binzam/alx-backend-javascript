@@ -1,4 +1,4 @@
-interface Student {
+export interface Student {
   firstName: string;
   lastName: string;
   age: number;
@@ -9,7 +9,7 @@ const student1: Student = {
   firstName: 'John',
   lastName: 'Doe',
   age: 25,
-  location: 'New York',
+  location: 'Tokyo',
 };
 
 const student2: Student = {
@@ -21,8 +21,9 @@ const student2: Student = {
 
 const studentsList: Student[] = [student1, student2];
 
-function renderTable() {
-  const tableBody = document.getElementById('student-table-body');
+export function renderTable() {
+  const table = document.createElement('table');
+  const tableBody = document.createElement('tbody');
 
   studentsList.forEach((student) => {
     const tableRow = document.createElement('tr');
@@ -35,8 +36,11 @@ function renderTable() {
     tableRow.appendChild(firstNameCell);
     tableRow.appendChild(locationCell);
 
-    tableBody?.appendChild(tableRow);
+    tableBody.appendChild(tableRow);
   });
+
+  table.appendChild(tableBody);
+  document.body.appendChild(table);
 }
 
 window.onload = renderTable;
