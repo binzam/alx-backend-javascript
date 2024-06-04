@@ -1,14 +1,14 @@
 const fs = require('fs');
 
 function countStudents(path) {
+  if (!fs.existsSync(path) || !fs.statSync(path).isFile()) {
+    throw new Error('Cannot load the database');
+  }
   const db = fs
     .readFileSync(path, 'utf-8')
     .toString('utf-8')
     .trim()
     .split('\n');
-  if (!fs.existsSync(path) || !db) {
-    throw new Error('Cannot load the database');
-  }
   const dbHeaders = db[0].split(',');
   const students = db.slice(1);
   const studentObjects = students.map((student) => {
