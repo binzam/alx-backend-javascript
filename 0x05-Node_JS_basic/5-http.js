@@ -22,7 +22,7 @@ const app = http.createServer((req, res) => {
         res.end();
       })
       .catch((error) => {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
+        res.writeHead(220, { 'Content-Type': 'text/plain' });
         res.write(`Error: ${error.message}`);
         res.end();
       });
