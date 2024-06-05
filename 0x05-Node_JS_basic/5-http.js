@@ -9,6 +9,7 @@ const app = http.createServer((req, res) => {
   } else if (req.url === '/students') {
     countStudents(dbFile)
       .then((data) => {
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.write('This is the list of our students\n');
         res.write(`Number of students: ${data.totalStudents}\n`);
         Object.keys(data.fieldCount).forEach((field) => {
@@ -25,6 +26,10 @@ const app = http.createServer((req, res) => {
         res.write(`Error: ${error.message}`);
         res.end();
       });
+  } else {
+    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    res.write('Not found');
+    res.end();
   }
 });
 app.listen('1245');
