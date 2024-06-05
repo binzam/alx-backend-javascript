@@ -1,7 +1,7 @@
 const http = require('http');
 const countStudents = require('./3-read_file_async');
 
-const dbFile = process.argv[2];
+const dbFile = process.argv.length > 2 ? process.argv[2] : '';
 const app = http.createServer((req, res) => {
   if (req.url === '/') {
     res.write('Hello Holberton School!');
