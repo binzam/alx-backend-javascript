@@ -9,9 +9,9 @@ const app = http.createServer((req, res) => {
     res.write('Hello Holberton School!');
     res.end();
   } else if (req.url === '/students') {
+    res.write('This is the list of our students\n');
     countStudents(dbFile)
       .then((data) => {
-        res.write('This is the list of our students\n');
         res.write(data.output.slice(0, -1));
         res.end();
       })
