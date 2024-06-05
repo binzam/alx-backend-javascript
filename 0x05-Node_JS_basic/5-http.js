@@ -21,9 +21,10 @@ const app = http.createServer((req, res) => {
         });
         res.end();
       })
-      .catch(() => {
-        res.statusCode = 200;
-        res.end('Cannot load the database');
+      .catch((error) => {
+        res.writeHead(500, { 'Content-Type': 'text/plain' });
+        res.write(`Error: ${error.message}`);
+        res.end();
       });
   } else {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
@@ -34,3 +35,4 @@ const app = http.createServer((req, res) => {
 app.listen('1245');
 
 module.exports = app;
+
