@@ -8,7 +8,8 @@ const app = http.createServer((req, res) => {
   if (req.url === '/') {
     res.write('Hello Holberton School!');
     res.end();
-  } else if (req.url === '/students') {
+  }
+  if (req.url === '/students') {
     res.write('This is the list of our students\n');
     countStudents(dbFile)
       .then((data) => {
@@ -19,10 +20,6 @@ const app = http.createServer((req, res) => {
         res.statusCode = 404;
         res.end('Cannot load the database');
       });
-  } else {
-    res.writeHead(404, { 'Content-Type': 'text/plain' });
-    res.write('Not found');
-    res.end();
   }
 });
 app.listen('1245');
