@@ -1,26 +1,28 @@
 const express = require('express');
-const countStudents = require('./helper');
+const countStudents = require('./3-read_file_async');
 
 const dbFile = process.argv[2];
 const app = express();
 const port = 1245;
 
 app.get('/', (req, res) => {
-  res.send('Hello Holberton School!');
+  res.type('text').send('Hello Holberton School!');
 });
 
 app.get('/students', (req, res) => {
   countStudents(dbFile)
     .then((data) => {
-      res.send(
-        ['This is the list of our students', data.output.slice(0, -1)].join(
-          '\n',
-        ),
-      );
-      res.end();
+      let response = 'This is the list of our students\n';
+      response += `Number of students: ${data.totalStudents}\n`;
+      Object.keys(data.fieldCount).forEach((field) => {
+        response += `Number of students in ${field}: ${
+          data.fieldCount[field]
+        }. List: ${data.fieldStudents[field].join(', ')}\n`;
+      });
+      res.type('text').send(response);
     })
-    .catch(() => {
-      res.send('This is the list of our students\nCannot load the database');
+    .catch((error) => {
+      res.status(500).send(`Error: ${error.message}`);
     });
 });
 
