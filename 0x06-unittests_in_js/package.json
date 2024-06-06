@@ -1,0 +1,19 @@
+{
+  "name": "unittest-in-js",
+  "version": "1.0.0",
+  "description": "unittesting in javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "chai": "^5.1.1",
+    "mocha": "^10.4.0",
+    "sinon": "^18.0.0"
+  }
+}
