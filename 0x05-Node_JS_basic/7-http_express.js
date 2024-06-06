@@ -19,7 +19,7 @@ app.get('/students', (req, res) => {
           data.fieldCount[field]
         }. List: ${data.fieldStudents[field].join(', ')}\n`;
       });
-      res.type('text').send(response);
+      res.type('text').send(response.trim());
     })
     .catch((error) => {
       res.status(500).send(`Error: ${error.message}`);
@@ -31,4 +31,3 @@ app.listen(port, () => {
 });
 
 module.exports = app;
-
