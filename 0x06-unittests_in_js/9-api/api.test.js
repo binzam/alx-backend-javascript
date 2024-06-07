@@ -28,6 +28,13 @@ describe('Cart Page', function () {
     );
   });
 
+  it('check correct content for correct url', function (done) {
+    request.get('http://localhost:7865/cart/12', function (err, res, body) {
+      expect(body).to.contain('Payment methods for cart 12');
+      done();
+    });
+  });
+
   it('responds with status 404 when :id is NOT a number', function (done) {
     request.get(
       'http://localhost:7865/cart/abc',
