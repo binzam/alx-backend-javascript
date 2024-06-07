@@ -1,5 +1,5 @@
-import AppController from '../../full_server/controllers/AppContoller';
-import StudentsController from '../../full_server/controllers/StudentController';
+import AppController from '../controllers/AppContoller';
+import StudentsController from '../controllers/StudentController';
 
 const mapRoutes = (app) => {
   app.get('/', AppController.getHomepage);

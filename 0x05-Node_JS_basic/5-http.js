@@ -19,11 +19,10 @@ const app = http.createServer((req, res) => {
       .catch(() => {
         res.statusCode = 404;
         res.write('Cannot load the database');
-	res.end();
+        res.end();
       });
   }
 });
 app.listen('1245');
 
 module.exports = app;
-
