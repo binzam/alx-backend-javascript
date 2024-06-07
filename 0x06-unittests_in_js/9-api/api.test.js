@@ -16,18 +16,25 @@ describe('Index Page', function () {
     });
   });
 });
+
 describe('Cart Page', function () {
   it('responds with status 200 when :id is a number', function (done) {
-    request('http://localhost:7865/cart/12', function (error, response, body) {
-      expect(response.statusCode).to.equal(200);
-      done();
-    });
+    request.get(
+      'http://localhost:7865/cart/12',
+      function (error, response, body) {
+        expect(response.statusCode).to.equal(200);
+        done();
+      }
+    );
   });
 
   it('responds with status 404 when :id is NOT a number', function (done) {
-    request('http://localhost:7865/cart/abc', function (error, response, body) {
-      expect(response.statusCode).to.equal(404);
-      done();
-    });
+    request.get(
+      'http://localhost:7865/cart/abc',
+      function (error, response, body) {
+        expect(response.statusCode).to.equal(404);
+        done();
+      }
+    );
   });
 });
